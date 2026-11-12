@@ -184,3 +184,24 @@ form .linha{display:grid;grid-template-columns:1fr 1fr;gap:14px}
 .mini-precos b{font-family:'Montserrat';color:var(--azul-esc);font-size:18px}
 @media(max-width:900px){.caixa.alt{grid-template-columns:1fr}}
 @media(max-width:900px){.cards[style]{grid-template-columns:1fr!important}}
+
+/* black november */
+.faixa-black{background:#0b0b0d;color:#fff;font-size:14px;display:flex;gap:16px;justify-content:center;align-items:center;flex-wrap:wrap;padding:8px 14px;text-align:center}
+.faixa-black b{color:var(--ouro);letter-spacing:.06em}
+.faixa-black a{color:#0b0b0d;background:var(--ouro);text-decoration:none;font-weight:800;padding:4px 12px;border-radius:999px;font-size:13px}
+.faixa-black a:first-of-type{background:#25d366;color:#fff}
+.black{padding:0;background:#0b0b0d}
+.black-box{display:grid;grid-template-columns:1.2fr .8fr;gap:36px;align-items:center;padding:56px 22px;color:#fff;position:relative}
+.black-box::before{content:"";position:absolute;inset:0;background:radial-gradient(600px 300px at 15% 20%,rgba(255,184,28,.18),transparent 70%);pointer-events:none}
+.black-tag{display:inline-block;border:2px solid var(--ouro);color:var(--ouro);font-family:'Montserrat';font-weight:800;letter-spacing:.2em;padding:6px 14px;border-radius:8px;font-size:14px;margin-bottom:16px}
+.black h2{color:#fff;font-size:clamp(30px,4vw,48px);margin-bottom:22px}
+.black h2 em{font-style:normal;color:var(--ouro)}
+.black-cond{list-style:none;display:flex;gap:12px;flex-wrap:wrap}
+.black-cond li{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);border-radius:12px;padding:10px 16px;font-size:15px}
+.black-cond b{color:var(--ouro);font-family:'Montserrat';font-size:18px}
+.black-acoes{display:flex;flex-direction:column;gap:12px;position:relative}
+.black-acoes .btn{justify-content:center}
+.black-acoes p{font-size:14px;opacity:.75;text-align:center}
+.btn-vip{background:#25d366;color:#fff}
+.btn-vip:hover{background:#1ebe5a;transform:translateY(-2px)}
+@media(max-width:800px){.black-box{grid-template-columns:1fr}.faixa-black{font-size:13px;gap:8px}}
