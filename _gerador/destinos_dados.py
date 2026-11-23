@@ -793,4 +793,19 @@ dict(slug="atacama", nome="Deserto do Atacama", tag="Aventura e natureza · Chil
            ("Arredores","Hotéis com mais conforto.","Mais conforto"),
            ("Ayllus","Tranquilo.","Mais tranquila")],
   sol="O ano todo", tempo="4 a 5 noites", voo="Voo até Calama com conexão em Santiago e traslado", temp=CIDADE),
+
+# ==================== INCLUÍDOS DEPOIS (sempre no final, para manter a numeração das capas) ====================
+dict(slug="arraial-dajuda", nome="Arraial d'Ajuda", tag="Praias do Nordeste · Bahia", ancora="nordeste",
+  frase="Vila charmosa no alto da falésia, praias de água morna e ruas cheias de restaurantes e lojinhas.",
+  por_titulo="Charme, praia e animação na medida",
+  por=["Arraial d'Ajuda fica do outro lado do rio, em frente a Porto Seguro. A vila tem ruas de pedra, igrejinha com vista para o mar e a famosa Rua do Mucugê, cheia de restaurantes e lojinhas.",
+       "As praias são lindas e variadas, das mais animadas às mais tranquilas, e Trancoso fica pertinho para um passeio de dia."],
+  para=[("Casais","pousadas charmosas e jantares na vila"),("Famílias","praias com estrutura e parque aquático"),("Jovens e amigos","barracas e noites animadas")],
+  passeios=[("Praia da Pitinga e Lagoa Azul","Falésias coloridas, mar calmo e argila natural para um banho diferente.",None),
+            ("Arraial d'Ajuda Eco Parque","Parque aquático de frente para o mar, diversão garantida para as crianças.",None),
+            ("Trancoso","Passeio de um dia até o Quadrado e as praias de Trancoso.",None)],
+  regioes=[("Centro e Rua do Mucugê","Perto dos restaurantes, lojas e da vida noturna. Tudo a pé.","Mais procurada"),
+           ("Praias do Mucugê e Parracho","Pousadas e hotéis pé na areia, perto das barracas.","Mais praia"),
+           ("Pitinga","Mais tranquila, com falésias e pousadas charmosas.","Mais tranquila")],
+  sol="Setembro a março", tempo="5 a 7 noites", voo="Voo até Porto Seguro e travessia de balsa até a vila", temp=NE),
 ]
