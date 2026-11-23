@@ -244,3 +244,31 @@ form .linha{display:grid;grid-template-columns:1fr 1fr;gap:14px}
 .q.sol{background:#ffe7a3}.q.trans{background:#d6e4c4}.q.chuva{background:#c4d6ee}.q.alta{border:2px solid #f59e0b;background:#fff}
 @media(max-width:1000px){.passeios,.regioes{grid-template-columns:1fr 1fr}.meses{grid-template-columns:repeat(4,1fr)}}
 @media(max-width:600px){.passeios,.regioes{grid-template-columns:1fr}.meses{grid-template-columns:repeat(3,1fr)}.hotel{grid-template-columns:1fr}.capa-dest .voltar{position:static;display:inline-block;margin-bottom:14px}}
+
+/* destino v2 */
+.passeios.tres{grid-template-columns:repeat(3,1fr);gap:22px}
+.passeios.tres .passeio{padding:0;overflow:hidden;background:#fff;box-shadow:var(--sombra)}
+.passeio .foto{height:220px;background:var(--foto,none) center/cover,linear-gradient(140deg,#0aa3b5,#57d0c4)}
+.passeio .txt{padding:22px 24px 26px}
+.regioes{grid-template-columns:repeat(3,1fr)}
+.regiao-c.destaque-r{border-top-color:var(--azul)}
+.selo-r{display:inline-block;font-size:12px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;background:var(--azul);color:#fff;border-radius:999px;padding:3px 10px;margin-bottom:10px}
+.selo-r.calmo{background:#2f7d3a}
+.hoteis-cols{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.hoteis-cols>div{background:#fff;border-radius:14px;padding:20px 22px}
+.hoteis-cols h4{font-family:'Montserrat';color:var(--ouro-esc);font-size:14px;letter-spacing:.08em;text-transform:uppercase;margin-bottom:8px}
+.hoteis-cols ul{list-style:none}
+.hoteis-cols li{padding:7px 0;border-bottom:1px dashed #e3e7ef;font-weight:700;color:var(--azul-esc)}
+.hoteis-cols li:last-child{border-bottom:0}
+.infos{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-bottom:28px}
+.infos>div{background:var(--fundo);border:1px solid #eef1f6;border-radius:var(--raio);padding:20px 22px;text-align:center}
+.infos span{font-size:28px;display:block}
+.infos b{display:block;font-family:'Montserrat';color:var(--azul-esc);margin:4px 0}
+.infos p{color:var(--cinza);font-size:15px}
+.mes{min-height:0;padding:16px 8px}
+.mes span{font-weight:800;font-size:14px}
+.mes.alta{background:#ffe2b8;border-color:transparent}.mes.alta span{color:#b45309}
+.mes.media{background:#fff4d6}.mes.media span{color:#8a6d00}
+.mes.baixa{background:#e3ecf7}.mes.baixa span{color:#30507d}
+.q.alta{background:#ffe2b8;border:0}.q.media{background:#fff4d6}.q.baixa{background:#e3ecf7}
+@media(max-width:900px){.passeios.tres,.regioes,.infos{grid-template-columns:1fr}.hoteis-cols{grid-template-columns:1fr}}
