@@ -168,6 +168,10 @@ def revisao():
 <div class="wrap"><h1>Revisão das páginas de destino</h1><p class="nota">Página interna (fora do Google). %d destinos. Fotos em verde já estão na pasta img; em vermelho, ainda faltam. Os nomes dos arquivos precisam ser exatamente estes.</p>
 <table><tr><th>Página</th><th>Fotos (pasta img)</th><th>Hotéis indicados</th></tr>%s</table></div></body></html>''' % (len(DESTINOS), ''.join(linhas))
 
+# Regra da agência: julho é sempre alta temporada (férias escolares).
+for d in DESTINOS:
+    d['temp'] = d['temp'][:6] + 'A' + d['temp'][7:]
+
 for d in DESTINOS:
     assert len(d['temp']) == 12 and len(d['passeios']) == 3, d['slug']
     open(os.path.join(RAIZ, d['slug'] + '.html'), 'w', encoding='utf-8').write(pagina(d))
