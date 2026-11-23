@@ -272,3 +272,6 @@ form .linha{display:grid;grid-template-columns:1fr 1fr;gap:14px}
 .mes.baixa{background:#e3ecf7}.mes.baixa span{color:#30507d}
 .q.alta{background:#ffe2b8;border:0}.q.media{background:#fff4d6}.q.baixa{background:#e3ecf7}
 @media(max-width:900px){.passeios.tres,.regioes,.infos{grid-template-columns:1fr}.hoteis-cols{grid-template-columns:1fr}}
+.hoteis-cols.um{grid-template-columns:1fr}
+.hoteis-cols.um ul{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:0 18px}
+.hoteis-cta p{color:var(--cinza);margin-bottom:16px}
