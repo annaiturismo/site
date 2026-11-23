@@ -39,7 +39,7 @@
 @media(max-width:900px){.estilos{grid-template-columns:1fr 1fr}}
 @media(max-width:480px){.estilo{min-height:140px;padding:20px 16px}.estilo h3{font-size:17px}}
 
-.queridinhos{display:grid;grid-template-columns:repeat(6,1fr);gap:14px}
+.queridinhos{display:grid;grid-template-columns:repeat(5,1fr);gap:14px}
 .queridinho{background:#fff;border-radius:16px;padding:18px 16px;box-shadow:var(--sombra);text-decoration:none;color:inherit;border:1px solid #eef1f6;transition:.2s;display:flex;flex-direction:column;gap:4px}
 .queridinho:hover{transform:translateY(-3px);border-color:var(--ouro)}
 .queridinho .pos{font-family:'Montserrat';font-weight:800;color:var(--ouro-esc);font-size:14px}
@@ -110,7 +110,7 @@
 </div></section>
 
 <section style="background:#fff;padding:64px 0"><div class="wrap">
-  <div class="titulo" style="margin-bottom:32px"><small>Mais escolhidos</small><h2>Os queridinhos dos nossos clientes</h2><p>Os hotéis e viagens que mais vendemos, e que os clientes voltam contando como foi bom.</p></div>
+  <div class="titulo" style="margin-bottom:32px"><small>Mais escolhidos</small><h2>Os queridinhos dos nossos clientes</h2><p>Os destinos que mais vendemos, e que os clientes voltam contando como foi bom.</p></div>
   <div class="queridinhos" id="queridinhos"></div>
 </div></section>
 
@@ -191,12 +191,11 @@ var REGIOES = ['Brasil','Caribe','América do Sul','Estados Unidos'];
 
 /* Queridinhos: os mais vendidos da agência */
 var QUERIDINHOS = [
-  {nome:'Vila Galé Alagoas',        onde:'Resort · Marechal Deodoro/AL', link:'resorts-vila-gale.html'},
-  {nome:'Iberostar Waves Bahia',    onde:'Resort · Praia do Forte/BA', link:'resorts-praia-do-forte.html'},
-  {nome:'Sauípe Ala Mar',           onde:'Resort · Costa do Sauípe/BA', link:'resorts-praia-do-forte.html'},
-  {nome:'Cana Brava',               onde:'Resort · Ilhéus/BA', link:'cana-brava.html'},
-  {nome:'Occidental Caribe',        onde:'Resort · Punta Cana', link:'punta-cana.html'},
-  {nome:'Grupo Disney',             onde:'Orlando e Miami com guia', link:'disney.html'}
+  {nome:'Maceió',            onde:'Alagoas',        link:'maceio.html'},
+  {nome:'Porto de Galinhas', onde:'Pernambuco',     link:'porto-de-galinhas.html'},
+  {nome:'João Pessoa',       onde:'Paraíba',        link:'joao-pessoa.html'},
+  {nome:'Porto Seguro',      onde:'Bahia',          link:'porto-seguro.html'},
+  {nome:'Rio de Janeiro',    onde:'Rio de Janeiro', link:'rio-de-janeiro.html'}
 ];
 
 /* inv: 1 = $, 2 = $$, 3 = $$$ */
