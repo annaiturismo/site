@@ -206,3 +206,41 @@ form .linha{display:grid;grid-template-columns:1fr 1fr;gap:14px}
 .btn-vip{background:#25d366;color:#fff}
 .btn-vip:hover{background:#1ebe5a;transform:translateY(-2px)}
 @media(max-width:800px){.black-box{grid-template-columns:1fr}.faixa-black{font-size:13px;gap:8px}}
+
+/* ===== página individual de destino ===== */
+.capa-dest{position:relative;color:#fff;padding:90px 0 80px;text-align:center;
+  background:linear-gradient(180deg,rgba(10,38,84,.35),rgba(10,38,84,.75)),var(--foto,none) center/cover,linear-gradient(135deg,#0a8fa3,var(--azul))}
+.capa-dest h1{color:#fff;font-size:clamp(40px,6vw,68px);margin-bottom:12px}
+.capa-dest p{max-width:660px;margin:0 auto;font-size:19px;opacity:.95}
+.capa-dest .acoes-capa{margin-top:28px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.capa-dest .voltar{position:absolute;left:22px;top:-58px;color:#fff;text-decoration:none;font-weight:700;font-size:15px;opacity:.9}
+.capa-dest .wrap{position:relative}
+.faixa-num span{display:block}
+.porque p{color:var(--cinza);margin-bottom:14px}
+.passeios{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.passeio{background:var(--fundo);border:1px solid #eef1f6;border-radius:var(--raio);padding:24px}
+.passeio .emo{font-size:30px;display:block;margin-bottom:10px}
+.passeio h3{font-size:18px;margin-bottom:6px}
+.passeio p{color:var(--cinza);font-size:15px}
+.regioes{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-bottom:30px}
+.regiao-c{background:#fff;border-radius:var(--raio);padding:24px;box-shadow:var(--sombra);border-top:5px solid var(--ouro)}
+.regiao-c h3{font-size:19px;margin-bottom:6px}
+.regiao-c p{color:var(--cinza);font-size:15px}
+.hoteis{background:var(--azul-claro);border-radius:var(--raio);padding:28px}
+.hoteis h3{margin-bottom:14px}
+.hotel{background:#fff;border-radius:14px;padding:18px 20px;display:grid;grid-template-columns:260px 1fr;gap:16px;align-items:center;margin-top:10px}
+.hotel b{display:block;font-family:'Montserrat';color:var(--azul-esc);font-size:17px}
+.hotel span{font-size:14px;color:var(--ouro-esc);font-weight:800}
+.hotel p{color:var(--cinza);font-size:15px}
+.meses{display:grid;grid-template-columns:repeat(6,1fr);gap:10px}
+.mes{border-radius:14px;padding:14px 10px;text-align:center;border:2px solid transparent;min-height:96px}
+.mes b{display:block;font-family:'Montserrat';color:var(--azul-esc);font-size:17px}
+.mes span{display:block;font-size:13.5px;color:#3a4357}
+.mes i{display:inline-block;margin-top:6px;font-style:normal;font-size:11.5px;font-weight:800;background:#fff;color:#b45309;border-radius:999px;padding:2px 8px}
+.mes.sol{background:#fff4d6}.mes.trans{background:#eef3e6}.mes.chuva{background:#e3ecf7}
+.mes.alta{border-color:#f59e0b}
+.legenda{display:flex;gap:18px;flex-wrap:wrap;justify-content:center;margin-top:18px;font-size:14px;color:var(--cinza)}
+.legenda .q{display:inline-block;width:14px;height:14px;border-radius:4px;vertical-align:-2px;margin-right:6px}
+.q.sol{background:#ffe7a3}.q.trans{background:#d6e4c4}.q.chuva{background:#c4d6ee}.q.alta{border:2px solid #f59e0b;background:#fff}
+@media(max-width:1000px){.passeios,.regioes{grid-template-columns:1fr 1fr}.meses{grid-template-columns:repeat(4,1fr)}}
+@media(max-width:600px){.passeios,.regioes{grid-template-columns:1fr}.meses{grid-template-columns:repeat(3,1fr)}.hotel{grid-template-columns:1fr}.capa-dest .voltar{position:static;display:inline-block;margin-bottom:14px}}
