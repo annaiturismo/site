@@ -497,21 +497,6 @@ dict(slug="mendoza", nome="Mendoza", tag="Romântico · Argentina", ancora="roma
   sol="O ano todo (vindima em março)", tempo="4 a 5 noites", voo="Com conexão (em geral via Santiago ou Buenos Aires)", temp=CIDADE),
 
 # ==================== EUROPA ====================
-dict(slug="portugal", nome="Portugal", tag="Europa · Portugal", ancora="europa",
-  frase="Lisboa, Sintra, Porto e o Vale do Douro, sem a barreira do idioma.",
-  por_titulo="A Europa que fala português",
-  por=["Portugal é ótimo para a primeira viagem à Europa: idioma, comida familiar e cidades lindas.",
-       "Dá para combinar Lisboa, Porto, Douro e até o Algarve."],
-  para=[("Casais e melhor idade","ritmo tranquilo"),("Quem ama gastronomia","bacalhau e vinhos"),("Primeira viagem à Europa","sem barreira de idioma")],
-  passeios=[("Sintra","Palácios de conto de fadas.",None),
-            ("Porto e Vale do Douro","Vinho do Porto e vinhedos.",None),
-            ("Lisboa","Alfama, Belém e o elétrico 28.",None)],
-  regioes=[("Lisboa (Baixa e Chiado)","Central e charmosa.","Mais procurada"),
-           ("Porto (Ribeira)","À beira do Douro.","Mais charmosa"),
-           ("Algarve","Praias no sul.","Praia")],
-  sol="Abril a outubro", tempo="10 a 12 noites", voo="Com conexão até Lisboa ou Porto", temp=EUROPA),
-
-# ==================== HISTÓRIA E CULTURA ====================
 dict(slug="minas-historicas", nome="Cidades históricas de Minas", tag="História e cultura · Minas Gerais", ancora="historia",
   frase="Igrejas barrocas, ruas de pedra e a melhor comida mineira.",
   por_titulo="Uma viagem no tempo",

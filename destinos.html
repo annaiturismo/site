@@ -2,7 +2,7 @@
 <html lang="pt-BR"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Para onde ir? Guia de destinos | Annaí Turismo</title>
-<meta name="description" content="Ainda não sabe para onde viajar? Guia de destinos da Annaí Turismo por estilo de viagem: praias do Brasil, Caribe, resorts all inclusive, família, neve, romântico, Europa, cultura e aventura. Saídas de Porto Alegre.">
+<meta name="description" content="Ainda não sabe para onde viajar? Guia de destinos da Annaí Turismo por estilo de viagem: praias do Brasil, Caribe, resorts all inclusive, família, neve, romântico, cultura e aventura. Saídas de Porto Alegre.">
 <link rel="icon" href="img/selo.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&amp;family=Nunito+Sans:ital,wght@0,400;0,700;0,800;1,400&amp;display=swap" rel="stylesheet">
@@ -25,7 +25,7 @@
 .e-aventura{--c1:#2f7d3a;--c2:#7cbf4a}
 .e-europa{--c1:#1d3f8f;--c2:#6c8fd8}
 
-.estilos{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.estilos{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
 .estilo{position:relative;border:0;cursor:pointer;text-align:left;font:inherit;color:#fff;border-radius:var(--raio);padding:26px 22px;min-height:200px;display:flex;flex-direction:column;justify-content:flex-end;
   background:var(--foto,none) center/cover,linear-gradient(140deg,var(--c1),var(--c2));box-shadow:var(--sombra);transition:.25s;overflow:hidden}
 .estilo::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 25%,rgba(0,0,0,.62));pointer-events:none}
@@ -182,13 +182,12 @@ var ESTILOS = [
   {id:'resorts',   nome:'Resorts all inclusive',         emo:'🍹', txt:'Tudo incluído, é só relaxar',               foto:'img/estilo-resorts.jpg'},
   {id:'familia',   nome:'Famílias com crianças',         emo:'🎢', txt:'Parques, diversão e estrutura para os pequenos', foto:'img/estilo-familia.jpg'},
   {id:'neve',      nome:'Neve',                          emo:'❄️', txt:'Montanhas, esqui e chocolate quente',       foto:'img/estilo-neve.jpg'},
-  {id:'europa',    nome:'Europa',                        emo:'🗼', txt:'Capitais, vilarejos, vinhos e roteiros com guia', foto:'img/estilo-europa.jpg'},
   {id:'romantico', nome:'Romântico',                     emo:'💑', txt:'Lua de mel, bodas ou só os dois',           foto:'img/estilo-romantico.jpg'},
   {id:'historia',  nome:'História, cultura e gastronomia', emo:'🏛️', txt:'Museus, cidades históricas e boa comida', foto:'img/estilo-historia.jpg'},
   {id:'aventura',  nome:'Aventura e natureza',           emo:'🥾', txt:'Trilhas, cachoeiras, dunas e rios cristalinos', foto:'img/estilo-aventura.jpg'}
 ];
 
-var REGIOES = ['Brasil','Caribe','América do Sul','Estados Unidos','Europa'];
+var REGIOES = ['Brasil','Caribe','América do Sul','Estados Unidos'];
 
 /* Queridinhos: os mais vendidos da agência */
 var QUERIDINHOS = [
@@ -338,9 +337,6 @@ var DESTINOS = [
   {nome:'Peru e Machu Picchu', pagina:'peru.html', onde:'Lima e Cusco', regiao:'América do Sul', estilos:['historia','aventura'], emo:'🦙',
    desc:'Uma das cidades perdidas mais famosas do mundo, Vale Sagrado, Cusco e a premiada gastronomia de Lima.',
    para:'Casais e amigos', epoca:'Abril a outubro', dias:'7 a 8 noites', inv:2},
-  {nome:'Portugal', pagina:'portugal.html', onde:'Lisboa, Porto e mais', regiao:'Europa', estilos:['europa','historia'], emo:'🇵🇹',
-   desc:'Lisboa, Sintra, Porto e o Vale do Douro, sem a barreira do idioma e com muito bacalhau e vinho.',
-   para:'Casais e melhor idade', epoca:'Abril a outubro', dias:'10 a 12 noites', inv:3},
 
   /* ---------- AVENTURA E NATUREZA ---------- */
   {nome:'Jalapão', pagina:'jalapao.html', onde:'Tocantins', regiao:'Brasil', estilos:['aventura'], emo:'🚙',
