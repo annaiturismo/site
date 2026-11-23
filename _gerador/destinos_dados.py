@@ -667,7 +667,7 @@ dict(slug="arraial-dajuda", nome="Arraial d'Ajuda", tag="Praias do Nordeste · B
            ("Praias do Mucugê e Parracho","Pousadas e hotéis pé na areia, perto das barracas.","Mais praia"),
            ("Pitinga","Mais tranquila, com falésias e pousadas charmosas.","Mais tranquila")],
   sol="Setembro a março", tempo="5 a 7 noites", voo="Voo até Porto Seguro e travessia de balsa até a vila", temp=NE),
-dict(slug="rio-de-janeiro", nome="Rio de Janeiro", tag="Cidade maravilhosa · Rio de Janeiro", ancora="romantico",
+dict(slug="rio-de-janeiro", nome="Rio de Janeiro", tag="Praias do Brasil · Rio de Janeiro", ancora="nordeste",
   frase="Cristo Redentor, Pão de Açúcar, Copacabana e Ipanema: o Rio dos cartões-postais.",
   por_titulo="A cidade maravilhosa",
   por=["O Rio junta praias famosas como Copacabana e Ipanema, paisagens de cartão-postal e bairros charmosos, boa comida e muita animação.",
