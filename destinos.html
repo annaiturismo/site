@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="pt-BR"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Para onde ir? Guia de destinos | Annaí Turismo</title>
+<meta name="description" content="Ainda não sabe para onde viajar? Guia de destinos da Annaí Turismo por estilo de viagem: praias do Nordeste, Caribe, resorts all inclusive, família, neve, romântico, Europa, cultura e aventura. Saídas de Porto Alegre.">
+<link rel="icon" href="img/selo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&amp;family=Nunito+Sans:ital,wght@0,400;0,700;0,800;1,400&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="estilo.css">
+<style>
+/* ===== página destinos ===== */
+.cabeca.destinos{background:radial-gradient(900px 400px at 80% 0%,#1f8fb0 0%,transparent 60%),linear-gradient(135deg,var(--azul-esc),var(--azul))}
+.cabeca .passos{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:26px}
+.cabeca .passos span{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);border-radius:999px;padding:8px 16px;font-size:15px}
+.cabeca .passos b{color:var(--ouro)}
+
+/* cores de cada estilo */
+.e-nordeste{--c1:#0aa3b5;--c2:#57d0c4}
+.e-caribe{--c1:#0077b6;--c2:#00c2d1}
+.e-resorts{--c1:#e98b00;--c2:#ffc93c}
+.e-familia{--c1:#4b2fa8;--c2:#8a63e0}
+.e-neve{--c1:#4f7fb8;--c2:#a9c9ec}
+.e-romantico{--c1:#c2416b;--c2:#f08a8a}
+.e-historia{--c1:#8a4b2a;--c2:#c98a4b}
+.e-aventura{--c1:#2f7d3a;--c2:#7cbf4a}
+.e-europa{--c1:#1d3f8f;--c2:#6c8fd8}
+
+.estilos{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.estilo{position:relative;border:0;cursor:pointer;text-align:left;font:inherit;color:#fff;border-radius:var(--raio);padding:26px 22px;min-height:200px;display:flex;flex-direction:column;justify-content:flex-end;
+  background:var(--foto,none) center/cover,linear-gradient(140deg,var(--c1),var(--c2));box-shadow:var(--sombra);transition:.25s;overflow:hidden}
+.estilo::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 25%,rgba(0,0,0,.62));pointer-events:none}
+.estilo h3,.estilo p{text-shadow:0 1px 6px rgba(0,0,0,.45)}
+.estilo>*{position:relative}
+.estilo:hover,.estilo.ativo{transform:translateY(-5px);box-shadow:0 18px 40px rgba(10,38,84,.22)}
+.estilo.ativo{outline:4px solid var(--ouro);outline-offset:3px}
+.estilo .emo{font-size:30px;line-height:1;margin-bottom:auto;filter:drop-shadow(0 2px 4px rgba(0,0,0,.4))}
+.estilo h3{color:#fff;font-size:19px;margin:18px 0 4px}
+.estilo p{font-size:14.5px;opacity:.95;line-height:1.4}
+@media(max-width:900px){.estilos{grid-template-columns:1fr 1fr}}
+@media(max-width:480px){.estilo{min-height:140px;padding:20px 16px}.estilo h3{font-size:17px}}
+
+.queridinhos{display:grid;grid-template-columns:repeat(6,1fr);gap:14px}
+.queridinho{background:#fff;border-radius:16px;padding:18px 16px;box-shadow:var(--sombra);text-decoration:none;color:inherit;border:1px solid #eef1f6;transition:.2s;display:flex;flex-direction:column;gap:4px}
+.queridinho:hover{transform:translateY(-3px);border-color:var(--ouro)}
+.queridinho .pos{font-family:'Montserrat';font-weight:800;color:var(--ouro-esc);font-size:14px}
+.queridinho b{color:var(--azul-esc);font-family:'Montserrat';font-size:16px;line-height:1.25}
+.queridinho span{font-size:14px;color:var(--cinza)}
+@media(max-width:1000px){.queridinhos{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:560px){.queridinhos{grid-template-columns:1fr 1fr}}
+
+.filtros{display:flex;flex-direction:column;gap:12px;margin-bottom:30px}
+.filtros .grupo{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.filtros .rot{font-weight:800;font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:var(--cinza);min-width:78px}
+.chip{border:1.5px solid #d7dde8;background:#fff;color:var(--azul-esc);font:inherit;font-weight:700;font-size:14.5px;padding:8px 15px;border-radius:999px;cursor:pointer;transition:.15s}
+.chip:hover{border-color:var(--azul)}
+.chip.ativo{background:var(--azul);border-color:var(--azul);color:#fff}
+.contagem{color:var(--cinza);font-size:15px;margin-bottom:18px}
+
+.destinos-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.dest{background:#fff;border-radius:var(--raio);box-shadow:var(--sombra);overflow:hidden;display:flex;flex-direction:column;border:1px solid #eef1f6}
+.dest .topo-d{height:132px;padding:16px 18px;display:flex;justify-content:space-between;align-items:flex-start;color:#fff;position:relative;
+  background:var(--foto,none) center/cover,linear-gradient(140deg,var(--c1),var(--c2))}
+.dest .topo-d .emo{font-size:44px;line-height:1;position:absolute;right:18px;bottom:12px;opacity:.9}
+.dest .regiao{background:rgba(0,0,0,.25);border-radius:999px;padding:4px 12px;font-size:12.5px;font-weight:800;letter-spacing:.04em}
+.dest .corpo{padding:22px 22px 24px;display:flex;flex-direction:column;flex:1}
+.dest h3{font-size:20px;margin-bottom:2px}
+.dest .onde{font-size:14px;color:var(--ouro-esc);font-weight:800;margin-bottom:10px}
+.dest .desc{color:var(--cinza);font-size:15.5px;margin-bottom:16px;flex:1}
+.dest dl{display:grid;grid-template-columns:1fr 1fr;gap:10px 14px;margin-bottom:18px;background:var(--azul-claro);border-radius:12px;padding:14px}
+.dest dt{font-size:11.5px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--cinza)}
+.dest dd{font-size:14.5px;color:var(--azul-esc);font-weight:700;line-height:1.35}
+.dest .tags{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:16px}
+.dest .tags span{font-size:12.5px;background:#f3f0e6;color:#6b5200;border-radius:999px;padding:3px 10px;font-weight:700}
+.dest .acoes{display:flex;gap:10px;flex-wrap:wrap}
+.dest .acoes .btn{padding:11px 18px;font-size:14.5px}
+.btn-linha-azul{border:2px solid var(--azul);color:var(--azul);background:#fff}
+.btn-linha-azul:hover{background:var(--azul-claro)}
+@media(max-width:1000px){.destinos-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:640px){.destinos-grid{grid-template-columns:1fr}}
+.vazio{text-align:center;color:var(--cinza);padding:40px 0;display:none}
+</style>
+</head><body>
+<div class="faixa-black"><span>🖤 <b>BLACK NOVEMBER ANNAÍ</b> · até 15x sem juros</span><a href="https://chat.whatsapp.com/E6jDnfhgnNoAmlWYY6Kmr2" target="_blank" rel="noopener">Entrar no grupo VIP</a><a href="https://viajandocomdesconto.com/annai-turismo/" target="_blank" rel="noopener">Ver ofertas</a></div>
+<header class="topo"><div class="wrap">
+  <a class="logo" href="index.html"><img src="img/logo.png" alt="Annaí Turismo"></a>
+  <button class="abrir-menu" aria-label="Abrir menu" onclick="document.querySelector('.menu').classList.toggle('aberto')">☰</button>
+  <ul class="menu">
+    <li><a href="index.html">Início</a></li>
+    <li><a href="destinos.html" class="ativo">Destinos</a></li>
+    <li><a href="https://viajandocomdesconto.com/annai-turismo/" class="ext" target="_blank" rel="noopener">Pacotes Aéreos</a></li>
+    <li><a href="https://annaiturismo.gruposcomguia.com.br" class="ext" target="_blank" rel="noopener">Grupos com Guia</a></li>
+    <li><a href="disney.html">Disney</a></li>
+    <li><a href="sobre-nos.html">Nossa História</a></li>
+    <li><a href="contato.html">Contato</a></li>
+    <li><a class="btn-wpp" href="https://wa.me/5555999207070?text=Ol%C3%A1%2C%20vim%20pelo%20site%20e%20gostaria%20de%20um%20or%C3%A7amento!" target="_blank" rel="noopener">Fale conosco</a></li>
+  </ul>
+</div></header>
+<main>
+
+<div class="cabeca destinos"><div class="wrap">
+  <span class="etiqueta">Guia de destinos</span>
+  <h1>Ainda não sabe para onde ir?</h1>
+  <p>Comece pelo tipo de viagem que você quer viver. A gente mostra os destinos que combinam com você, e a equipe da Annaí ajuda a fechar o roteiro ideal, sempre com saída de Porto Alegre.</p>
+  <div class="passos"><span><b>1.</b> Escolha o estilo</span><span><b>2.</b> Compare os destinos</span><span><b>3.</b> Peça sua sugestão</span></div>
+</div></div>
+
+<section><div class="wrap">
+  <div class="titulo"><small>Passo 1</small><h2>Que tipo de viagem você sonha?</h2><p>Toque em um estilo para ver os destinos que combinam com ele.</p></div>
+  <div class="estilos" id="estilos"></div>
+</div></section>
+
+<section style="background:#fff;padding:64px 0"><div class="wrap">
+  <div class="titulo" style="margin-bottom:32px"><small>Mais escolhidos</small><h2>Os queridinhos dos nossos clientes</h2><p>Os hotéis e viagens que mais vendemos, e que os clientes voltam contando como foi bom.</p></div>
+  <div class="queridinhos" id="queridinhos"></div>
+</div></section>
+
+<section id="lista"><div class="wrap">
+  <div class="titulo" style="margin-bottom:32px"><small>Passo 2</small><h2>Compare os destinos</h2><p>Veja para quem é cada lugar, a melhor época e quantos dias aproveitar.</p></div>
+  <div class="filtros">
+    <div class="grupo" id="f-estilo"><span class="rot">Estilo</span></div>
+    <div class="grupo" id="f-regiao"><span class="rot">Região</span></div>
+  </div>
+  <p class="contagem" id="contagem"></p>
+  <div class="destinos-grid" id="grade"></div>
+  <p class="vazio" id="vazio">Nenhum destino com essa combinação ainda. Fale com a gente que montamos uma sugestão para você!</p>
+  <p class="nota centro">Melhor época e duração são referências gerais. Investimento: <b>$</b> mais econômico · <b>$$</b> intermediário · <b>$$$</b> mais alto. Os valores variam com a data, o hotel e a antecedência da compra.</p>
+</div></section>
+
+<section class="cta"><div class="wrap">
+  <h2>Passo 3: deixe a gente te ajudar a escolher</h2>
+  <p>Conte quem vai viajar, o mês e quanto pretende investir. A Annaí sugere os melhores destinos e hotéis para você.</p>
+  <a class="btn btn-azul" href="https://wa.me/5555999207070?text=Ol%C3%A1!%20Vim%20pelo%20guia%20de%20destinos%20do%20site%20e%20ainda%20estou%20indeciso.%20Pode%20me%20ajudar%20a%20escolher%3F" target="_blank" rel="noopener">Quero uma sugestão pelo WhatsApp</a>
+</div></section>
+
+</main>
+<footer class="rodape"><div class="wrap">
+  <div class="cols">
+    <div>
+      <span class="logo-br"><img src="img/logo.png" alt="Annaí Turismo"></span>
+      <p>Desde 1989 realizando viagens a partir de Santiago e região. Passagens aéreas, pacotes, cruzeiros, grupos e seguro viagem.</p>
+    </div>
+    <div>
+      <h4>Navegue</h4>
+      <a href="index.html">Início</a>
+      <a href="destinos.html">Destinos</a>
+      <a href="https://viajandocomdesconto.com/annai-turismo/" target="_blank" rel="noopener">Pacotes Aéreos</a>
+      <a href="https://annaiturismo.gruposcomguia.com.br" target="_blank" rel="noopener">Grupos com Guia</a>
+      <a href="disney.html">Disney</a>
+      <a href="sobre-nos.html">Nossa História</a>
+    </div>
+    <div>
+      <h4>Atendimento</h4>
+      <a href="https://wa.me/5555999207070?text=Ol%C3%A1%2C%20vim%20pelo%20site%20e%20gostaria%20de%20um%20or%C3%A7amento!" target="_blank" rel="noopener">WhatsApp (55) 99920-7070</a>
+      <a href="tel:+555532511808">Fixo (55) 3251-1808</a>
+      <a href="https://maps.google.com/?q=Rua+Benjamin+Constant+257+Santiago+RS" target="_blank" rel="noopener">Rua Benjamin Constant, 257<br>Santiago/RS</a>
+    </div>
+    <div>
+      <h4>Siga a Annaí</h4>
+      <a href="https://www.instagram.com/annaiturismosantiago" target="_blank" rel="noopener">Instagram</a>
+      <a href="https://www.facebook.com/annaiturismo" target="_blank" rel="noopener">Facebook</a>
+      <a href="https://g.page/r/CfDtUYyBt0fREBM/review" target="_blank" rel="noopener">⭐ Avalie-nos no Google</a>
+    </div>
+  </div>
+  <div class="base"><span>© 2026 Annaí Turismo · CNPJ 72.209.836/0001-01</span><span>Santiago · Rio Grande do Sul</span></div>
+</div></footer>
+<a class="wpp-flutua" href="https://wa.me/5555999207070?text=Ol%C3%A1%2C%20vim%20pelo%20site%20e%20gostaria%20de%20um%20or%C3%A7amento!" target="_blank" rel="noopener" aria-label="WhatsApp"><svg viewBox="0 0 32 32"><path d="M16 3C8.8 3 3 8.7 3 15.8c0 2.5.7 4.9 2 7L3 29l6.4-2c2 1.1 4.3 1.7 6.6 1.7 7.2 0 13-5.7 13-12.8S23.2 3 16 3zm0 23.4c-2.1 0-4.1-.6-5.9-1.7l-.4-.3-3.8 1.2 1.2-3.7-.3-.4c-1.2-1.8-1.9-3.9-1.9-6.1C4.9 9.8 9.9 4.9 16 4.9s11.1 4.9 11.1 10.9S22.1 26.4 16 26.4zm6.1-8.2c-.3-.2-2-1-2.3-1.1-.3-.1-.5-.2-.8.2-.2.3-.9 1.1-1.1 1.3-.2.2-.4.2-.7.1-.3-.2-1.4-.5-2.7-1.7-1-.9-1.7-2-1.9-2.3-.2-.3 0-.5.1-.7l.5-.6c.2-.2.2-.4.3-.6.1-.2 0-.4 0-.6-.1-.2-.8-1.8-1-2.5-.3-.7-.5-.6-.8-.6h-.6c-.2 0-.6.1-.9.4-.3.3-1.2 1.1-1.2 2.8s1.2 3.2 1.4 3.5c.2.2 2.4 3.6 5.8 5 .8.4 1.4.6 1.9.7.8.3 1.6.2 2.2.1.7-.1 2-.8 2.3-1.6.3-.8.3-1.5.2-1.6-.1-.2-.3-.3-.7-.4z"></path></svg></a>
+
+<script>
+/* =========================================================
+   GUIA DE DESTINOS · Annaí Turismo
+   Para incluir, tirar ou editar um destino, mexa só na lista
+   DESTINOS abaixo. Para colocar foto, preencha "foto" com o
+   caminho da imagem (ex.: "img/destinos/maceio.jpg").
+   Para ligar à página própria do destino, preencha "pagina"
+   (ex.: "destinos/maceio.html").
+   ========================================================= */
+var WPP = 'https://wa.me/5555999207070?text=';
+
+var ESTILOS = [
+  {id:'nordeste',  nome:'Praias do Nordeste',            emo:'🏖️', txt:'Mar quente, piscinas naturais e muito sol', foto:'img/estilo-nordeste.jpg'},
+  {id:'caribe',    nome:'Caribe',                        emo:'🌴', txt:'Mar azul-turquesa e areia branquinha',      foto:'img/estilo-caribe.jpg'},
+  {id:'resorts',   nome:'Resorts all inclusive',         emo:'🍹', txt:'Tudo incluído, é só relaxar',               foto:'img/estilo-resorts.jpg'},
+  {id:'familia',   nome:'Famílias com crianças',         emo:'🎢', txt:'Parques, diversão e estrutura para os pequenos', foto:'img/estilo-familia.jpg'},
+  {id:'neve',      nome:'Neve',                          emo:'❄️', txt:'Montanhas, esqui e chocolate quente',       foto:'img/estilo-neve.jpg'},
+  {id:'europa',    nome:'Europa',                        emo:'🗼', txt:'Capitais, vilarejos, vinhos e roteiros com guia', foto:'img/estilo-europa.jpg'},
+  {id:'romantico', nome:'Romântico',                     emo:'💑', txt:'Lua de mel, bodas ou só os dois',           foto:'img/estilo-romantico.jpg'},
+  {id:'historia',  nome:'História, cultura e gastronomia', emo:'🏛️', txt:'Museus, cidades históricas e boa comida', foto:'img/estilo-historia.jpg'},
+  {id:'aventura',  nome:'Aventura e natureza',           emo:'🥾', txt:'Trilhas, cachoeiras, dunas e rios cristalinos', foto:'img/estilo-aventura.jpg'}
+];
+
+var REGIOES = ['Brasil','Caribe','América do Sul','Estados Unidos','Europa'];
+
+/* Queridinhos: os mais vendidos da agência */
+var QUERIDINHOS = [
+  {nome:'Vila Galé Alagoas',        onde:'Resort · Marechal Deodoro/AL'},
+  {nome:'Iberostar Waves Bahia',    onde:'Resort · Praia do Forte/BA'},
+  {nome:'Sauípe Ala Mar',           onde:'Resort · Costa do Sauípe/BA'},
+  {nome:'Cana Brava',               onde:'Resort · Ilhéus/BA'},
+  {nome:'Occidental Caribe',        onde:'Resort · Punta Cana'},
+  {nome:'Grupo Disney',             onde:'Orlando e Miami com guia', link:'disney.html'}
+];
+
+/* inv: 1 = $, 2 = $$, 3 = $$$ */
+var DESTINOS = [
+  /* ---------- PRAIAS DO NORDESTE ---------- */
+  {nome:'Maceió', onde:'Alagoas', regiao:'Brasil', estilos:['nordeste','familia'], emo:'🏖️',
+   desc:'Orla bonita e estruturada, piscinas naturais de Pajuçara e passeios para Gunga, Francês e São Miguel dos Milagres.',
+   para:'Famílias e casais', epoca:'Setembro a março', dias:'6 a 7 noites', inv:2},
+  {nome:'Maragogi', onde:'Alagoas', regiao:'Brasil', estilos:['nordeste','romantico'], emo:'🐠',
+   desc:'As famosas galés, piscinas naturais em alto-mar, e a Rota Ecológica dos Milagres com praias quase desertas.',
+   para:'Casais e quem quer sossego', epoca:'Setembro a março', dias:'5 a 7 noites', inv:2},
+  {nome:'Porto de Galinhas', onde:'Pernambuco', regiao:'Brasil', estilos:['nordeste','familia','romantico'], emo:'🛶',
+   desc:'Passeio de jangada até as piscinas naturais, vila charmosa e praias como Muro Alto e Carneiros por perto.',
+   para:'Famílias e casais', epoca:'Setembro a março', dias:'6 a 7 noites', inv:2},
+  {nome:'Recife e Olinda', onde:'Pernambuco', regiao:'Brasil', estilos:['nordeste','historia'], emo:'🎭',
+   desc:'Praia de Boa Viagem, centro histórico do Recife Antigo e as ladeiras coloridas de Olinda, cheias de cultura.',
+   para:'Quem gosta de cultura e praia', epoca:'Setembro a março', dias:'4 a 5 noites', inv:1},
+  {nome:'João Pessoa', onde:'Paraíba', regiao:'Brasil', estilos:['nordeste','familia'], emo:'🌅',
+   desc:'Cidade tranquila e arborizada, piscinas de Picãozinho, Ponta do Seixas e o pôr do sol na Praia do Jacaré.',
+   para:'Famílias e melhor idade', epoca:'Setembro a março', dias:'5 a 7 noites', inv:1},
+  {nome:'Natal', onde:'Rio Grande do Norte', regiao:'Brasil', estilos:['nordeste','familia','aventura'], emo:'🏜️',
+   desc:'Passeio de buggy nas dunas de Genipabu, lagoas, Maracajaú e a Praia da Pipa a pouco mais de uma hora.',
+   para:'Famílias e amigos', epoca:'Agosto a março', dias:'6 a 7 noites', inv:2},
+  {nome:'Aracaju', onde:'Sergipe', regiao:'Brasil', estilos:['nordeste','familia'], emo:'🦀',
+   desc:'Orla de Atalaia com muita estrutura, comida farta e o passeio de catamarã pelo Cânion do Xingó.',
+   para:'Famílias e melhor idade', epoca:'Setembro a março', dias:'5 a 7 noites', inv:1},
+  {nome:'Salvador', onde:'Bahia', regiao:'Brasil', estilos:['nordeste','historia'], emo:'🥁',
+   desc:'Pelourinho, Elevador Lacerda, igrejas históricas, acarajé e o pôr do sol no Farol da Barra.',
+   para:'Quem gosta de história e culinária', epoca:'Setembro a março', dias:'4 a 5 noites', inv:2},
+  {nome:'Porto Seguro', onde:'Bahia', regiao:'Brasil', estilos:['nordeste','familia'], emo:'🎉',
+   desc:'Barracas de praia animadas, Arraial d\'Ajuda, parque aquático e passeios para Trancoso e Caraíva.',
+   para:'Famílias, jovens e grupos', epoca:'Setembro a março e julho', dias:'6 a 7 noites', inv:1},
+  {nome:'Morro de São Paulo', onde:'Bahia', regiao:'Brasil', estilos:['nordeste','aventura','romantico'], emo:'⛵',
+   desc:'Ilha sem carros, praias numeradas, tirolesa, piscinas naturais e volta à ilha de lancha.',
+   para:'Casais e amigos', epoca:'Setembro a março', dias:'4 a 5 noites', inv:2},
+  {nome:'Fortaleza', onde:'Ceará', regiao:'Brasil', estilos:['nordeste','familia'], emo:'💦',
+   desc:'Beach Park, Praia do Futuro, Cumbuco e Canoa Quebrada. Ótima base para conhecer o litoral cearense.',
+   para:'Famílias com crianças', epoca:'Julho a janeiro', dias:'6 a 7 noites', inv:2},
+  {nome:'Jericoacoara', onde:'Ceará', regiao:'Brasil', estilos:['nordeste','aventura','romantico'], emo:'🪁',
+   desc:'Vila rústica, pôr do sol na Duna, Lagoa do Paraíso com redes na água e paraíso do kitesurfe.',
+   para:'Casais e amigos', epoca:'Julho a janeiro', dias:'4 a 6 noites', inv:2},
+  {nome:'Fernando de Noronha', onde:'Pernambuco', regiao:'Brasil', estilos:['nordeste','romantico','aventura'], emo:'🐢',
+   desc:'Baía do Sancho, mergulho com tartarugas e golfinhos e natureza preservada. Uma viagem para a vida.',
+   para:'Casais e amantes de mergulho', epoca:'Agosto a janeiro', dias:'4 a 6 noites', inv:3},
+
+  /* ---------- CARIBE ---------- */
+  {nome:'Punta Cana', onde:'República Dominicana', regiao:'Caribe', estilos:['caribe','resorts','romantico','familia'], emo:'🌴',
+   desc:'Resorts all inclusive pé na areia, mar azul e passeios para Isla Saona. O Caribe mais prático para brasileiros.',
+   para:'Casais e famílias', epoca:'Dezembro a abril', dias:'7 noites', inv:2},
+  {nome:'Cancún e Riviera Maya', onde:'México', regiao:'Caribe', estilos:['caribe','resorts','historia'], emo:'🇲🇽',
+   desc:'Zona hoteleira, Playa del Carmen, cenotes, parques como Xcaret e as ruínas maias de Chichén Itzá e Tulum.',
+   para:'Casais, famílias e amigos', epoca:'Dezembro a abril', dias:'7 a 8 noites', inv:3},
+  {nome:'San Andrés', onde:'Colômbia', regiao:'Caribe', estilos:['caribe'], emo:'🌊',
+   desc:'O "mar de sete cores", passeios de barco e compras com preços bons. Um Caribe com ótimo custo-benefício.',
+   para:'Casais, amigos e famílias', epoca:'Dezembro a abril', dias:'5 a 7 noites', inv:2},
+  {nome:'Curaçao', onde:'Caribe holandês', regiao:'Caribe', estilos:['caribe','historia'], emo:'🏘️',
+   desc:'Willemstad com suas casinhas coloridas, praias pequenas e lindas e mergulho de primeira.',
+   para:'Casais e quem gosta de mergulho', epoca:'O ano todo', dias:'7 noites', inv:3},
+  {nome:'Aruba', onde:'Caribe holandês', regiao:'Caribe', estilos:['caribe','romantico'], emo:'🦩',
+   desc:'Eagle Beach, os flamingos, brisa constante e uma ilha segura e organizada.',
+   para:'Casais e famílias', epoca:'O ano todo', dias:'7 noites', inv:3},
+
+  /* ---------- RESORTS ALL INCLUSIVE ---------- */
+  {nome:'Resorts em Praia do Forte e Sauípe', onde:'Mata de São João · Bahia', regiao:'Brasil', estilos:['resorts','familia','nordeste'], emo:'🍹',
+   desc:'Iberostar, Grand Palladium, Sauípe Ala Mar, Ala Terra e Brisa: o maior polo de resorts do Brasil, perto de Salvador.',
+   para:'Famílias e casais', epoca:'O ano todo (mais sol de setembro a março)', dias:'5 a 7 noites', inv:2},
+  {nome:'Resorts em Porto de Galinhas', onde:'Ipojuca · Pernambuco', regiao:'Brasil', estilos:['resorts','familia'], emo:'🏝️',
+   desc:'Enotel, Ocaporã, Summerville e outros, em praias como Muro Alto, com piscinas enormes e mar calmo.',
+   para:'Famílias e casais', epoca:'Setembro a março', dias:'5 a 7 noites', inv:3},
+  {nome:'Resorts Vila Galé', onde:'Alagoas, Ceará e outros', regiao:'Brasil', estilos:['resorts','familia'], emo:'👨‍👩‍👧',
+   desc:'Rede com ótimo custo-benefício e clube infantil. Destaque para o Vila Galé Alagoas e o Vila Galé Cumbuco.',
+   para:'Famílias com crianças', epoca:'Setembro a março', dias:'5 a 7 noites', inv:2},
+  {nome:'Resorts em Natal', onde:'Rio Grande do Norte', regiao:'Brasil', estilos:['resorts'], emo:'☀️',
+   desc:'Wish, Serhs, Ocean Palace e Costeira Palace, com fácil acesso às dunas e aos passeios de buggy.',
+   para:'Famílias e casais', epoca:'Agosto a março', dias:'5 a 7 noites', inv:2},
+  {nome:'Resorts no Ceará', onde:'Beberibe e Cumbuco', regiao:'Brasil', estilos:['resorts','familia'], emo:'🌞',
+   desc:'Coliseum em Beberibe e Vila Galé Cumbuco: sol quase garantido no segundo semestre e muita estrutura.',
+   para:'Famílias e casais', epoca:'Julho a janeiro', dias:'5 a 7 noites', inv:2},
+  {nome:'Cana Brava Resort', onde:'Ilhéus · Bahia', regiao:'Brasil', estilos:['resorts','familia'], emo:'🌿',
+   desc:'All inclusive com muita natureza, ótima estrutura para crianças e um dos favoritos dos nossos clientes.',
+   para:'Famílias com crianças', epoca:'Setembro a março', dias:'5 a 7 noites', inv:2},
+
+  /* ---------- FAMÍLIAS COM CRIANÇAS ---------- */
+  {nome:'Disney e Orlando', onde:'Flórida · Estados Unidos', regiao:'Estados Unidos', estilos:['familia'], emo:'🏰',
+   desc:'Parques da Disney e da Universal, compras e muita magia. Também temos o Grupo Disney com guias, todo ano.',
+   para:'Famílias e adolescentes', epoca:'O ano todo (grupo em julho)', dias:'10 a 17 dias', inv:3, pagina:'disney.html'},
+  {nome:'Beto Carrero World', onde:'Penha · Santa Catarina', regiao:'Brasil', estilos:['familia'], emo:'🎠',
+   desc:'O maior parque temático da América Latina, pertinho do RS. Dá para emendar com Balneário Camboriú.',
+   para:'Famílias com crianças', epoca:'O ano todo (evite feriados)', dias:'3 a 4 noites', inv:1},
+  {nome:'Gramado e Canela', onde:'Serra Gaúcha · RS', regiao:'Brasil', estilos:['familia','romantico'], emo:'🍫',
+   desc:'Snowland, Mini Mundo, parques, chocolates e o Natal Luz. Perto de casa e encantador em qualquer época.',
+   para:'Famílias e casais', epoca:'O ano todo (Natal Luz de outubro a janeiro)', dias:'3 a 4 noites', inv:1},
+  {nome:'Foz do Iguaçu', onde:'Paraná', regiao:'Brasil', estilos:['familia','aventura'], emo:'💧',
+   desc:'Cataratas dos lados brasileiro e argentino, Parque das Aves, Itaipu e compras no Paraguai.',
+   para:'Famílias e todas as idades', epoca:'O ano todo', dias:'3 a 4 noites', inv:1},
+  {nome:'Olímpia', onde:'São Paulo', regiao:'Brasil', estilos:['familia'], emo:'🌊',
+   desc:'A capital dos parques aquáticos, com Thermas dos Laranjais e Hot Beach. Diversão garantida para as crianças.',
+   para:'Famílias com crianças', epoca:'O ano todo', dias:'3 a 4 noites', inv:1},
+
+  /* ---------- NEVE ---------- */
+  {nome:'Santiago do Chile', onde:'Chile', regiao:'América do Sul', estilos:['neve','historia'], emo:'⛷️',
+   desc:'Estações de esqui de Valle Nevado e Farellones a poucas horas, vinícolas, boa gastronomia e compras.',
+   para:'Casais, famílias e amigos', epoca:'Junho a setembro para neve', dias:'4 a 6 noites', inv:2},
+  {nome:'Bariloche', onde:'Argentina', regiao:'América do Sul', estilos:['neve','romantico','familia'], emo:'🏔️',
+   desc:'Cerro Catedral, lagos, Circuito Chico e as famosas chocolaterias. Clássico das férias de inverno.',
+   para:'Famílias e casais', epoca:'Julho a setembro para neve', dias:'5 a 7 noites', inv:2},
+  {nome:'Alpes Suíços', onde:'Suíça', regiao:'Europa', estilos:['neve','europa'], emo:'🇨🇭',
+   desc:'Zermatt e o Matterhorn, Interlaken, trens panorâmicos e vilarejos de cartão-postal.',
+   para:'Casais e famílias', epoca:'Dezembro a março para neve', dias:'8 a 10 noites', inv:3},
+  {nome:'Dolomitas e norte da Itália', onde:'Itália', regiao:'Europa', estilos:['neve','europa'], emo:'🇮🇹',
+   desc:'Cortina d\'Ampezzo e Val Gardena, culinária italiana e a chance de emendar com Veneza ou o Lago de Como.',
+   para:'Casais e amigos', epoca:'Dezembro a março para neve', dias:'8 a 10 noites', inv:3},
+  {nome:'Ushuaia', onde:'Argentina', regiao:'América do Sul', estilos:['neve','aventura'], emo:'🐧',
+   desc:'A cidade do fim do mundo: Trem do Fim do Mundo, Canal de Beagle, pinguins e neve no inverno.',
+   para:'Casais e aventureiros', epoca:'Junho a setembro para neve', dias:'4 a 5 noites', inv:2},
+
+  /* ---------- ROMÂNTICO ---------- */
+  {nome:'Trancoso', onde:'Bahia', regiao:'Brasil', estilos:['romantico','nordeste'], emo:'🕯️',
+   desc:'O Quadrado iluminado à noite, praias de falésias e pousadas boutique cheias de charme.',
+   para:'Casais e lua de mel', epoca:'Setembro a março', dias:'4 a 6 noites', inv:3},
+  {nome:'Taíba', onde:'Ceará', regiao:'Brasil', estilos:['romantico','nordeste'], emo:'🌾',
+   desc:'Vila de pescadores tranquila, falésias, lagoas e hotéis boutique para desconectar a dois.',
+   para:'Casais', epoca:'Julho a janeiro', dias:'4 a 6 noites', inv:2},
+  {nome:'Aquiraz', onde:'Ceará', regiao:'Brasil', estilos:['romantico','nordeste','resorts'], emo:'🥂',
+   desc:'Praias calmas a 30 km de Fortaleza, com hotéis boutique e resorts de alto padrão.',
+   para:'Casais', epoca:'Julho a janeiro', dias:'5 a 7 noites', inv:2},
+  {nome:'Toscana e Costa Amalfitana', onde:'Itália', regiao:'Europa', estilos:['europa','historia'], emo:'🍷',
+   desc:'Vinhedos, Florença, vilarejos medievais e as cidadezinhas penduradas no mar de Positano e Amalfi.',
+   para:'Casais e lua de mel', epoca:'Abril a outubro', dias:'10 a 12 noites', inv:3},
+  {nome:'Mendoza', onde:'Argentina', regiao:'América do Sul', estilos:['romantico','historia'], emo:'🍇',
+   desc:'Vinícolas aos pés dos Andes, almoços harmonizados e paisagens incríveis. Voo curto e ótimo custo.',
+   para:'Casais e amigos', epoca:'O ano todo (vindima em março)', dias:'4 a 5 noites', inv:2},
+
+  /* ---------- HISTÓRIA, CULTURA E GASTRONOMIA ---------- */
+  {nome:'Cidades históricas de Minas', onde:'Minas Gerais', regiao:'Brasil', estilos:['historia'], emo:'⛪',
+   desc:'Ouro Preto, Tiradentes, Mariana e Inhotim: igrejas barrocas, ruas de pedra e a melhor comida mineira.',
+   para:'Casais e melhor idade', epoca:'Abril a setembro', dias:'5 a 7 noites', inv:1},
+  {nome:'Rio de Janeiro Imperial', onde:'Rio e Petrópolis', regiao:'Brasil', estilos:['historia','familia'], emo:'👑',
+   desc:'Cristo Redentor, Pão de Açúcar, museus do centro e o Museu Imperial em Petrópolis.',
+   para:'Todas as idades', epoca:'O ano todo', dias:'4 a 6 noites', inv:2},
+  {nome:'São Paulo', onde:'São Paulo', regiao:'Brasil', estilos:['historia'], emo:'🍝',
+   desc:'Museus, teatros, musicais e a gastronomia mais variada do país. Temos roteiro com grupo acompanhado.',
+   para:'Casais, amigos e melhor idade', epoca:'O ano todo', dias:'3 a 5 noites', inv:2, grupo:true},
+  {nome:'Buenos Aires', onde:'Argentina', regiao:'América do Sul', estilos:['historia','romantico'], emo:'💃',
+   desc:'Show de tango, parrillas, Recoleta, Caminito e Puerto Madero. Uma Europa pertinho de casa.',
+   para:'Casais e amigos', epoca:'O ano todo', dias:'4 a 5 noites', inv:1},
+  {nome:'Peru e Machu Picchu', onde:'Lima e Cusco', regiao:'América do Sul', estilos:['historia','aventura'], emo:'🦙',
+   desc:'Uma das cidades perdidas mais famosas do mundo, Vale Sagrado, Cusco e a premiada gastronomia de Lima.',
+   para:'Casais e amigos', epoca:'Abril a outubro', dias:'7 a 8 noites', inv:2},
+  {nome:'Portugal', onde:'Lisboa, Porto e mais', regiao:'Europa', estilos:['europa','historia'], emo:'🇵🇹',
+   desc:'Lisboa, Sintra, Porto e o Vale do Douro, sem a barreira do idioma e com muito bacalhau e vinho.',
+   para:'Casais e melhor idade', epoca:'Abril a outubro', dias:'10 a 12 noites', inv:3},
+  {nome:'Europa clássica', onde:'Vários países', regiao:'Europa', estilos:['europa','historia'], emo:'🚌',
+   desc:'Roteiros em ônibus com guia em português passando por Paris, Roma, Madri e outras capitais.',
+   para:'Casais, amigos e melhor idade', epoca:'Abril a outubro', dias:'12 a 20 dias', inv:3},
+  {nome:'Paris e França', onde:'França', regiao:'Europa', estilos:['europa','historia'], emo:'🥐',
+   desc:'Torre Eiffel, Louvre, Montmartre e passeios para Versalhes, os castelos do Loire e a Normandia.',
+   para:'Casais e famílias', epoca:'Abril a outubro', dias:'6 a 8 noites', inv:3},
+  {nome:'Espanha', onde:'Madri, Barcelona e Andaluzia', regiao:'Europa', estilos:['europa','historia'], emo:'💃',
+   desc:'A Sagrada Família de Gaudí, tapas, flamenco em Sevilha e a Alhambra de Granada.',
+   para:'Casais, amigos e famílias', epoca:'Abril a outubro', dias:'8 a 10 noites', inv:3},
+  {nome:'Grécia e ilhas', onde:'Atenas, Santorini e Mykonos', regiao:'Europa', estilos:['europa','historia'], emo:'🏺',
+   desc:'A Acrópole de Atenas, o pôr do sol de Santorini e as praias de Mykonos. Também combina com cruzeiro.',
+   para:'Casais e amigos', epoca:'Maio a setembro', dias:'8 a 10 noites', inv:3},
+
+  /* ---------- AVENTURA E NATUREZA ---------- */
+  {nome:'Jalapão', onde:'Tocantins', regiao:'Brasil', estilos:['aventura'], emo:'🚙',
+   desc:'Fervedouros onde não dá para afundar, dunas douradas, cachoeiras e expedição de 4x4.',
+   para:'Amigos e aventureiros', epoca:'Maio a setembro', dias:'5 a 6 noites', inv:2},
+  {nome:'Chapada Diamantina', onde:'Bahia', regiao:'Brasil', estilos:['aventura'], emo:'⛰️',
+   desc:'Morro do Pai Inácio, Cachoeira da Fumaça, grutas com poços azuis e trilhas para todos os níveis.',
+   para:'Amigos e casais', epoca:'Abril a outubro', dias:'5 a 6 noites', inv:2},
+  {nome:'Bonito', onde:'Mato Grosso do Sul', regiao:'Brasil', estilos:['aventura','familia'], emo:'🐟',
+   desc:'Flutuação em rios cristalinos entre peixes, grutas, cachoeiras e o Buraco das Araras.',
+   para:'Famílias e casais', epoca:'O ano todo', dias:'4 a 5 noites', inv:2},
+  {nome:'Amazônia', onde:'Manaus · Amazonas', regiao:'Brasil', estilos:['aventura'], emo:'🌳',
+   desc:'Hotéis de selva, Encontro das Águas, botos e o Teatro Amazonas. Temos roteiro em grupo com guia.',
+   para:'Casais, amigos e melhor idade', epoca:'O ano todo', dias:'5 a 7 noites', inv:2, grupo:true},
+  {nome:'Lençóis Maranhenses', onde:'Maranhão', regiao:'Brasil', estilos:['aventura','nordeste'], emo:'🏝️',
+   desc:'Lagoas de água doce entre dunas brancas a perder de vista, passeios de 4x4 e sobrevoo.',
+   para:'Casais e amigos', epoca:'Junho a setembro', dias:'4 a 5 noites', inv:2},
+  {nome:'Deserto do Atacama', onde:'Chile', regiao:'América do Sul', estilos:['aventura'], emo:'🌌',
+   desc:'Gêiseres, lagunas altiplânicas, Vale da Lua e um dos céus mais estrelados do planeta.',
+   para:'Casais e amigos', epoca:'O ano todo', dias:'4 a 5 noites', inv:2}
+];
+
+/* ===================== não precisa mexer daqui para baixo ===================== */
+(function(){
+  var GRUPOS = 'https://annaiturismo.gruposcomguia.com.br';
+  var est = {estilo:'todos', regiao:'todas'};
+  var mapaE = {}; ESTILOS.forEach(function(e){mapaE[e.id]=e});
+  function $(id){return document.getElementById(id)}
+  function esc(s){return String(s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
+  function wpp(t){return WPP+encodeURIComponent(t)}
+  function fotoCss(f){return f?' style="--foto:url(\''+esc(f)+'\')"':''}
+
+  // blocos de estilo
+  $('estilos').innerHTML = ESTILOS.map(function(e){
+    return '<button class="estilo e-'+e.id+'" data-e="'+e.id+'"'+fotoCss(e.foto)+'><span class="emo">'+e.emo+'</span><h3>'+esc(e.nome)+'</h3><p>'+esc(e.txt)+'</p></button>';
+  }).join('');
+
+  // queridinhos
+  $('queridinhos').innerHTML = QUERIDINHOS.map(function(q,i){
+    var href = q.link || wpp('Olá! Vi no guia de destinos do site e quero saber mais sobre: '+q.nome+'.');
+    var alvo = q.link ? '' : ' target="_blank" rel="noopener"';
+    return '<a class="queridinho" href="'+href+'"'+alvo+'><span class="pos">#'+(i+1)+'</span><b>'+esc(q.nome)+'</b><span>'+esc(q.onde)+'</span></a>';
+  }).join('');
+
+  // filtros
+  function chip(grupo,val,txt){return '<button class="chip" data-g="'+grupo+'" data-v="'+val+'">'+esc(txt)+'</button>'}
+  $('f-estilo').innerHTML += chip('estilo','todos','Todos') + ESTILOS.map(function(e){return chip('estilo',e.id,e.nome)}).join('');
+  $('f-regiao').innerHTML += chip('regiao','todas','Todas') + REGIOES.map(function(r){return chip('regiao',r,r)}).join('');
+
+  function card(d){
+    var e = mapaE[d.estilos[0]];
+    var tags = d.estilos.map(function(id){return '<span>'+esc(mapaE[id].nome)+'</span>'}).join('');
+    var btns = '';
+    if (d.pagina) btns += '<a class="btn btn-linha-azul" href="'+esc(d.pagina)+'">Ver destino</a>';
+    if (d.grupo) btns += '<a class="btn btn-linha-azul" href="'+GRUPOS+'" target="_blank" rel="noopener">Ver grupo</a>';
+    btns += '<a class="btn btn-ouro" href="'+wpp('Olá! Vi no guia de destinos do site e tenho interesse em '+d.nome+'. Pode me mandar uma sugestão?')+'" target="_blank" rel="noopener">Quero uma sugestão</a>';
+    return '<article class="dest e-'+e.id+'">'+
+      '<div class="topo-d"'+fotoCss(d.foto)+'><span class="regiao">'+esc(d.regiao)+'</span><span class="emo">'+d.emo+'</span></div>'+
+      '<div class="corpo"><h3>'+esc(d.nome)+'</h3><div class="onde">'+esc(d.onde)+'</div>'+
+      '<p class="desc">'+esc(d.desc)+'</p>'+
+      '<dl><div><dt>Para quem</dt><dd>'+esc(d.para)+'</dd></div><div><dt>Melhor época</dt><dd>'+esc(d.epoca)+'</dd></div>'+
+      '<div><dt>Quanto tempo</dt><dd>'+esc(d.dias)+'</dd></div><div><dt>Investimento</dt><dd>'+'$$$'.slice(0,d.inv)+'</dd></div></dl>'+
+      '<div class="tags">'+tags+'</div><div class="acoes">'+btns+'</div></div></article>';
+  }
+
+  function render(){
+    var lista = DESTINOS.filter(function(d){
+      return (est.estilo==='todos' || d.estilos.indexOf(est.estilo)>-1) && (est.regiao==='todas' || d.regiao===est.regiao);
+    });
+    $('grade').innerHTML = lista.map(card).join('');
+    $('vazio').style.display = lista.length ? 'none' : 'block';
+    var nomeE = est.estilo==='todos' ? '' : ' em '+mapaE[est.estilo].nome;
+    var nomeR = est.regiao==='todas' ? '' : ' · '+est.regiao;
+    $('contagem').textContent = lista.length+(lista.length===1?' destino':' destinos')+nomeE+nomeR;
+    document.querySelectorAll('.chip').forEach(function(c){c.classList.toggle('ativo', est[c.dataset.g]===c.dataset.v)});
+    document.querySelectorAll('.estilo').forEach(function(b){b.classList.toggle('ativo', est.estilo===b.dataset.e)});
+  }
+
+  document.addEventListener('click',function(ev){
+    var c = ev.target.closest('.chip');
+    if (c){ est[c.dataset.g]=c.dataset.v; render(); return; }
+    var b = ev.target.closest('.estilo');
+    if (b){ est.estilo = (est.estilo===b.dataset.e ? 'todos' : b.dataset.e); est.regiao='todas'; render();
+      $('lista').scrollIntoView({behavior:'smooth'}); }
+  });
+
+  // permite abrir já filtrado: destinos.html#neve
+  var h = location.hash.replace('#','');
+  if (mapaE[h]) est.estilo = h;
+  render();
+})();
+</script>
+</body></html>
