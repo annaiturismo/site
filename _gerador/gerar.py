@@ -62,7 +62,7 @@ def pagina(d):
 ''' % (E(d['por_titulo']), '\n    '.join('<p>%s</p>' % E(p) for p in d['por']),
        '\n      '.join('<li><b>%s:</b> %s</li>' % (E(a), E(b)) for a, b in d['para'])))
     ps = ''.join('''
-    <div class="passeio"><div class="foto" style="--foto:url('%s')"></div><div class="txt"><h3>%s</h3><p>%s</p></div></div>''' % (foto(d, i), E(p[0]), E(p[1])) for i, p in enumerate(d['passeios']))
+    <div class="passeio"><img class="foto" src="%s" alt="" loading="lazy" onerror="this.remove()"><div class="txt"><h3>%s</h3><p>%s</p></div></div>''' % (foto(d, i), E(p[0]), E(p[1])) for i, p in enumerate(d['passeios']))
     h.append('''
 <section style="background:#fff"><div class="wrap">
   <div class="titulo"><small>O que fazer</small><h2>3 passeios que não podem faltar</h2><p>Os clássicos de %s, que cabem com folga na sua viagem.</p></div>
@@ -157,14 +157,14 @@ def pagina(d):
 
 def revisao():
     linhas = []
-    for d in DESTINOS:
+    for n, d in enumerate(DESTINOS, 1):
         fotos = ['%s-capa.jpg' % d['slug']] + [foto(d, i)[4:] for i in range(3)]
         existe = [os.path.exists(os.path.join(RAIZ, 'img', f)) for f in fotos]
-        fs = ''.join('<li class="%s">%s</li>' % ('ok' if e else 'falta', f) for f, e in zip(fotos, existe))
-        linhas.append('<tr><td><a href="%s.html" target="_blank">%s</a></td><td><ul>%s</ul></td><td>%s</td></tr>' % (d['slug'], E(d['nome']), fs, 'Sim' if d.get('hoteis') else '<b>Falta</b>'))
+        fs = ''.join('<li class="%s">%s%s</li>' % ('ok' if e else ('falta' if j == 0 else 'opc'), f, ' <small>(capa, obrigatória)</small>' if j == 0 else ' <small>(opcional)</small>') for j, (f, e) in enumerate(zip(fotos, existe)))
+        linhas.append('<tr><td>%d. <a href="%s.html" target="_blank">%s</a></td><td><ul>%s</ul></td><td>%s</td></tr>' % (n, d['slug'], E(d['nome']), fs, 'Sim' if d.get('hoteis') else '<b>Falta</b>'))
     return '''<!DOCTYPE html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex"><title>Revisão das páginas de destino | Annaí</title><link rel="stylesheet" href="estilo.css">
-<style>body{padding:30px}table{width:100%%;border-collapse:collapse;background:#fff}td,th{border-bottom:1px solid #e3e7ef;padding:10px;text-align:left;vertical-align:top;font-size:15px}ul{list-style:none}li.ok{color:#2f7d3a}li.ok::before{content:"✓ "}li.falta{color:#c0392b}li.falta::before{content:"✕ "}</style></head><body>
+<style>body{padding:30px}table{width:100%%;border-collapse:collapse;background:#fff}td,th{border-bottom:1px solid #e3e7ef;padding:10px;text-align:left;vertical-align:top;font-size:15px}ul{list-style:none}li.ok{color:#2f7d3a}li.ok::before{content:"✓ "}li.falta{color:#c0392b}li.falta::before{content:"✕ "}li.opc{color:#8a93a6}li.opc::before{content:"○ "}</style></head><body>
 <div class="wrap"><h1>Revisão das páginas de destino</h1><p class="nota">Página interna (fora do Google). %d destinos. Fotos em verde já estão na pasta img; em vermelho, ainda faltam. Os nomes dos arquivos precisam ser exatamente estes.</p>
 <table><tr><th>Página</th><th>Fotos (pasta img)</th><th>Hotéis indicados</th></tr>%s</table></div></body></html>''' % (len(DESTINOS), ''.join(linhas))
 
