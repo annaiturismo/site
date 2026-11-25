@@ -115,7 +115,7 @@
 </div></section>
 
 <section id="lista"><div class="wrap">
-  <div class="titulo" style="margin-bottom:32px"><small>Passo 2</small><h2>Compare os destinos</h2><p>Veja para quem é cada lugar, a melhor época e quantos dias aproveitar.</p></div>
+  <div class="titulo" style="margin-bottom:32px"><small>Passo 2</small><h2>Compare os destinos</h2><p>Conheça cada lugar e toque em “Ver destino” para saber o que fazer, onde ficar e quando ir.</p></div>
   <div class="filtros">
     <div class="grupo" id="f-estilo"><span class="rot">Estilo</span></div>
     <div class="grupo" id="f-regiao"><span class="rot">Região</span></div>
@@ -123,7 +123,6 @@
   <p class="contagem" id="contagem"></p>
   <div class="destinos-grid" id="grade"></div>
   <p class="vazio" id="vazio">Nenhum destino com essa combinação ainda. Fale com a gente que montamos uma sugestão para você!</p>
-  <p class="nota centro">Melhor época e duração são referências gerais. Investimento: <b>$</b> mais econômico · <b>$$</b> intermediário · <b>$$$</b> mais alto. Os valores variam com a data, o hotel e a antecedência da compra.</p>
 </div></section>
 
 <section class="cta"><div class="wrap">
@@ -384,7 +383,6 @@ var DESTINOS = [
 
   function card(d){
     var e = mapaE[d.estilos[0]];
-    var tags = d.estilos.map(function(id){return '<span>'+esc(mapaE[id].nome)+'</span>'}).join('');
     var btns = '';
     if (d.pagina) btns += '<a class="btn btn-linha-azul" href="'+esc(d.pagina)+'">Ver destino</a>';
     if (d.grupo) btns += '<a class="btn btn-linha-azul" href="'+GRUPOS+'" target="_blank" rel="noopener">Ver grupo</a>';
@@ -393,9 +391,7 @@ var DESTINOS = [
       '<div class="topo-d"'+fotoCss(d.foto)+'><span class="regiao">'+esc(d.regiao)+'</span><span class="emo">'+d.emo+'</span></div>'+
       '<div class="corpo"><h3>'+esc(d.nome)+'</h3><div class="onde">'+esc(d.onde)+'</div>'+
       '<p class="desc">'+esc(d.desc)+'</p>'+
-      '<dl><div><dt>Para quem</dt><dd>'+esc(d.para)+'</dd></div><div><dt>Melhor época</dt><dd>'+esc(d.epoca)+'</dd></div>'+
-      '<div><dt>Quanto tempo</dt><dd>'+esc(d.dias)+'</dd></div><div><dt>Investimento</dt><dd>'+'$$$'.slice(0,d.inv)+'</dd></div></dl>'+
-      '<div class="tags">'+tags+'</div><div class="acoes">'+btns+'</div></div></article>';
+      '<div class="acoes">'+btns+'</div></div></article>';
   }
 
   function render(){
